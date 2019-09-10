@@ -78,11 +78,12 @@ def main():
     else:
         for row in rows[1:]:
             duration = row[9]
-            participant_name = remove_turkish_characters(row[11].lower())
-            if participant_name in attendance:
-                attendance[participant_name] += float(duration)
-            else:
-                attendance[participant_name] = float(duration)
+            if(duration):
+                participant_name = remove_turkish_characters(row[11].lower())
+                if participant_name in attendance:
+                    attendance[participant_name] += float(duration)
+                else:
+                    attendance[participant_name] = float(duration)
 
         durations = list(attendance.values())
         mean = statistics.mean(durations)
